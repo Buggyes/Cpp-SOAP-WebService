@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+# GSOAP lib
+# You have to install it manually in this directory if you want to test the API
+gsoap-2.8
