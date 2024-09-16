@@ -34,3 +34,7 @@
 # GSOAP lib
 # You have to install it manually in this directory if you want to test the API
 gsoap-2.8
+
+# vscode extension configs
+# it really does not matter what extensions you use, this project relies on libraries rather than your conventional VSCode shenanigans
+.vscode
