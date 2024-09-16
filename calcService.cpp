@@ -1,10 +1,18 @@
 #include "calc.nsmap"        // XML namespace mapping table (only needed once at the global level)
 #include "soapcalcService.h" // the service class, also #includes "soapH.h" and "soapStub.h"
+#include <sys/socket.h>
 
+// The API opens at "http://localhost:[port]"
 int main()
 {
   calcService calc(SOAP_XML_INDENT);
-  if (calc.serve() != SOAP_OK)
+  calc.soap->connect_timeout = 10;
+  calc.soap->send_timeout = 5;
+  calc.soap->recv_timeout = 5;
+  calc.soap->socket_flags = MSG_NOSIGNAL;
+  int port = 8080;
+  std::cout << "Running at http://localhost:" << port << std::endl;
+  if (calc.run(port) != SOAP_OK)
     calc.soap_stream_fault(std::cerr);
   calc.destroy(); // same as: soap_destroy(calc.soap); soap_end(calc.soap);
 }
