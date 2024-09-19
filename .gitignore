@@ -38,3 +38,7 @@ gsoap-2.8
 # vscode extension configs
 # it really does not matter what extensions you use, this project relies on libraries rather than your conventional VSCode shenanigans
 .vscode
+
+#Soap request and response files
+*.req.xml
+*.res.xml
